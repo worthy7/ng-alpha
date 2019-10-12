@@ -11,15 +11,23 @@ import { TimedDataPoint } from '../timed-data-point';
 })
 export class DataStreamManagerComponent implements OnInit {
   datastreams$: Observable<TimedDataStream[]>;
+  datastreams: TimedDataStream[];
 
   constructor(
     private dsService: DataStreamService,
     private papa: Papa) {
-
-    this.datastreams$ = this.dsService.datastreams$;
+    this.dsService.datastreams$.subscribe(c => this.datastreams = c);
   }
 
   ngOnInit() {
+    this.dsService.refresh();
+  }
+
+  refresh() {
+    this.dsService.refresh();
+  }
+  delete(id: string) {
+    this.dsService.delete(id);
   }
 
   loadFile(file: File) {

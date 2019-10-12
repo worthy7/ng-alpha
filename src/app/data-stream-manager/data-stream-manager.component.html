@@ -1,5 +1,4 @@
 <h2> Data Manager </h2>
-
 <button mat-button [matMenuTriggerFor]="menu">Add</button>
 <mat-menu #menu="matMenu">
     <button mat-menu-item matTooltip="No headers, 'date, value' list only" (click)="csvinput.click()">CSV</button>
@@ -9,7 +8,7 @@
 
 </mat-menu>
 <mat-list role="list">
-    <mat-list-item role="listitem" *ngFor="let ds of datastreams$ | async">
-        {{ds.name}}
+    <mat-list-item role="listitem" *ngFor="let ds of datastreams">
+        {{ds.name}} <button mat-stroked-button (click)="delete(ds.id)">DELETE</button>
     </mat-list-item>
 </mat-list>
