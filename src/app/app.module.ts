@@ -10,6 +10,7 @@ import { MatListModule } from '@angular/material/list';
 import { MatMenuModule } from '@angular/material/menu';
 import { FormsModule } from '@angular/forms';
 import { MatTooltipModule } from '@angular/material/tooltip';
+import { ChartModule } from 'angular2-chartjs';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { MatTooltipModule } from '@angular/material/tooltip';
     FormsModule,
     MatListModule,
     MatMenuModule,
-    MatTooltipModule
+    MatTooltipModule,
+    ChartModule
   ],
   providers: [],
   bootstrap: [AppComponent]

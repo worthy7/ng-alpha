@@ -9,6 +9,9 @@ import { SESSION_STORAGE, StorageService } from 'ngx-webstorage-service';
   providedIn: 'root'
 })
 export class DataStreamService {
+  get(id: string): TimedDataStream {
+    return this.datastreams.find(c => c.id === id);
+  }
 
   datastreams$: Subject<TimedDataStream[]> = new Subject<TimedDataStream[]>();
   datastreams: TimedDataStream[] = [];
@@ -20,7 +23,8 @@ export class DataStreamService {
   create(name: string, data: TimedDataPoint[]) {
     const inp: TimedDataStream = {
       data,
-      name
+      name,
+      id: name
     };
     this.datastreams.push(inp);
     this.storage.set('data-streams', this.datastreams);
@@ -32,10 +36,10 @@ export class DataStreamService {
     this.datastreams$.next(this.datastreams);
   }
 
-  refresh(){
+  refresh() {
     this.datastreams$.next(this.datastreams);
   }
-  
+
   delete(id: string) {
     this.datastreams.remove((c) => c.id === id);
     this.storage.set('data-streams', this.datastreams);

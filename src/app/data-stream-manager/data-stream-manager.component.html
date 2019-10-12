@@ -9,6 +9,11 @@
 </mat-menu>
 <mat-list role="list">
     <mat-list-item role="listitem" *ngFor="let ds of datastreams">
-        {{ds.name}} <button mat-stroked-button (click)="delete(ds.id)" color="warn">DELETE</button>
+        {{ds.name}} 
+        <button mat-stroked-button (click)="delete(ds.id)" color="warn">DELETE</button>
+        <button mat-stroked-button (click)="chart(ds.id)" color="primary">SHOW</button>
     </mat-list-item>
 </mat-list>
+
+
+<chart [type]="charttype" [data]="chartdata" [options]="chartoptions"></chart>
